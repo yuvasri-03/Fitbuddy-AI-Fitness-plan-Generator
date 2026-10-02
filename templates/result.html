@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Fitness Plan - FitBuddy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .plan-box { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); white-space: pre-line; }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Welcome, {{ user[1] }}! 💪</h2>
+            <a href="/" class="btn btn-outline-secondary">Create New Plan</a>
+        </div>
+
+        <div class="card p-3 mb-4 bg-light">
+            <h5>User Details:</h5>
+            <p class="mb-1"><strong>Goal:</strong> {{ user[4] }} | <strong>Level:</strong> {{ user[5] }} | <strong>Diet:</strong> {{ user[6] }}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card border-primary h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h4>🏋️ Workout Plan</h4>
+                    </div>
+                    <div class="card-body plan-box">
+                        {{ user[7] }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card border-success h-100">
+                    <div class="card-header bg-success text-white">
+                        <h4>🥗 Diet Plan</h4>
+                    </div>
+                    <div class="card-body plan-box">
+                        {{ user[8] }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Goal Update Section -->
+        <div class="card p-4 mt-3">
+            <h4>Update Your Goal</h4>
+            <form action="/update/{{ user[0] }}" method="POST" class="row g-3 align-items-center mt-1">
+                <div class="col-auto">
+                    <select name="new_goal" class="form-select" required>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="Endurance">Endurance & Cardio</option>
+                        <option value="General Fitness">General Fitness</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-warning">Regenerate Plan 🔄</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
